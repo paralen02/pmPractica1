@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <mat-icon>menu</mat-icon>
+  <button mat-button [matMenuTriggerFor]="menuAdvisory">Asesoria</button>
+</mat-toolbar>
+
+<mat-menu #menuAdvisory="matMenu">
+  <button mat-menu-item routerLink="/advisory/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/advisory">Listar</button>
+
+  <!-- Agrega más elementos de menú si es necesario -->
+</mat-menu>
+
+
+<router-outlet></router-outlet>

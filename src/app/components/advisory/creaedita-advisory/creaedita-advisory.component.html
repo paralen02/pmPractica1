@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container" style="text-align: center">
+      <h2>Registro de asesorías</h2>
+      <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>idAdvisory</mat-label>
+          <input matInput placeholder="Id" formControlName="idAdvisory" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Asesoría</mat-label>
+          <input matInput placeholder="Asesoría" formControlName="nameAdvisory" />
+          <mat-error
+            *ngIf="obtenerControlCampo('nameAdvisory')?.errors?.['required']"
+          >
+            El nombre es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Precio</mat-label>
+          <input
+            matInput
+            placeholder="Precio"
+            formControlName="priceAdvisory"
+          />
+          <mat-error
+            *ngIf="obtenerControlCampo('priceAdvisory')?.errors?.['required']"
+          >
+            El precio es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Tipo</mat-label>
+          <mat-select formControlName="typeAdvisory">
+            <mat-option *ngFor="let p of tipos" [value]="p.value">
+              {{ p.viewValue }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="obtenerControlCampo('typeAdvisory')?.errors?.['required']"
+          >
+            El tipo es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Cantidad al mes</mat-label>
+          <mat-select formControlName="quantityAdvisory">
+            <mat-option *ngFor="let p of cantidades" [value]="p.value">
+              {{ p.viewValue }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="obtenerControlCampo('quantityAdvisory')?.errors?.['required']"
+          >
+            La cantidad es obligatoria.
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Tasa</mat-label>
+          <input
+            matInput
+            placeholder="Tasa"
+            formControlName="rateAdvisory"
+          />
+          <mat-error
+            *ngIf="obtenerControlCampo('rateAdvisory')?.errors?.['required']"
+          >
+            La tasa es obligatoria.
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <button mat-raised-button color="primary">Aceptar</button>
+        <button mat-raised-button color="warn" routerLink="/postres">
+          Cancelar
+        </button>
+        <p>{{ mensaje }}</p>
+      </form>
+    </div>
+  </body>
+</html>
